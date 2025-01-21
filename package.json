@@ -1,0 +1,172 @@
+{
+  "name": "string-mancer",
+  "displayName": "String Mancer",
+  "description": "String Mancer provides custom copy-paste handling and advanced string manipulation. Replace '\\' with '\\\\' on paste and vice versa on copy.",
+  "version": "0.0.1",
+  "publisher": "bornalgo",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "repository": { 
+    "type": "git", 
+    "url": "https://github.com/bornalgo/string-mancer.git" 
+  },
+  "icon": "images/icon.png",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.customPaste",
+        "title": "Custom Paste",
+        "icon": {
+          "dark": "images/dark-paste.png",
+          "light": "images/light-paste.png"
+        }
+      },
+      {
+        "command": "extension.customCopy",
+        "title": "Custom Copy",
+        "icon": {
+          "dark": "images/dark-copy.png",
+          "light": "images/light-copy.png"
+        }
+      },
+      {
+        "command": "extension.toUppercase",
+        "title": "Uppercase"
+      },
+      {
+        "command": "extension.toLowercase",
+        "title": "Lowercase"
+      },
+      {
+        "command": "extension.toCamelCase",
+        "title": "CamelCase"
+      },
+      {
+        "command": "extension.toCapitalize",
+        "title": "Capitalize"
+      },
+      {
+        "command": "extension.joinLinesBy",
+        "title": "Join Lines"
+      },
+      {
+        "command": "extension.splitLinesBy",
+        "title": "Split Lines"
+      },
+      {
+        "command": "extension.joinWordsBy",
+        "title": "Join Words"
+      },
+      {
+        "command": "extension.splitWordsBy",
+        "title": "Split Words"
+      },
+      {
+        "command": "extension.splitCamelCase",
+        "title": "Split CamelCase"
+      }
+    ],
+    "keybindings":[
+      {
+        "command": "extension.customPaste",
+        "key": "ctrl+alt+v",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "extension.customCopy",
+        "key": "ctrl+alt+c",
+        "when": "editorTextFocus"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "StringMancer.submenu",
+        "label": "String Mancer",
+        "icon": {
+          "dark": "images/dark-string-mancer.png",
+          "light": "images/light-string-mancer.png"
+        }
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "submenu": "StringMancer.submenu",
+          "group": "StringMancer"
+        }
+      ],
+      "StringMancer.submenu": [
+        {
+          "when": "editorHasSelection",
+          "command": "extension.customCopy",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.customPaste",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.toUppercase",
+          "group": "1_modifications"
+        },
+        {
+          "command": "extension.toLowercase",
+          "group": "1_modifications"
+        },
+        {
+          "command": "extension.toCamelCase",
+          "group": "1_modifications"
+        },
+        {
+          "command": "extension.toCapitalize",
+          "group": "1_modifications"
+        },
+        {
+          "command": "extension.joinLinesBy",
+          "group": "2_operations"
+        },
+        {
+          "command": "extension.splitLinesBy",
+          "group": "2_operations"
+        },
+        {
+          "command": "extension.joinWordsBy",
+          "group": "2_operations"
+        },
+        {
+          "command": "extension.splitWordsBy",
+          "group": "2_operations"
+        },
+        {
+          "command": "extension.splitCamelCase",
+          "group": "2_operations"
+        }
+      ]
+  }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.96.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "eslint": "^9.16.0",
+    "typescript": "^5.7.2",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
